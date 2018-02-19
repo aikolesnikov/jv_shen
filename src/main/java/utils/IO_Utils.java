@@ -17,4 +17,22 @@ public class IO_Utils {
         return i;
     }
 
+    public static int inputPositiveInt() {
+        Scanner input = new Scanner(System.in);
+        int i = 0;
+
+        try {
+            i = input.nextInt();
+            if (i < 0) {
+                i = 0;
+                throw new Exception("Must be positive!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Wrong input, value is set to 0.");
+        }
+
+        return i;
+    }
+
 }

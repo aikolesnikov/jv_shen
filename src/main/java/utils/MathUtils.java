@@ -42,6 +42,7 @@ public class MathUtils {
         }
         return -a;
     }
+
     static int safeAbs(int a) {
         if (a == Integer.MIN_VALUE) {
             throw new ArithmeticException("Integer overflow");
