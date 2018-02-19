@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class IO_Utils {
 
-    public final static int inputInt() {
+    public static int inputInt() {
         Scanner input = new Scanner(System.in);
         int i = 0;
 

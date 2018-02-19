@@ -1,7 +1,7 @@
 package utils;
 
 public class MathUtils {
-    public static final int safeAdd(int left, int right) {
+    public static int safeAdd(int left, int right) {
         if (right > 0 ? left > Integer.MAX_VALUE - right
                 : left < Integer.MIN_VALUE - right) {
             throw new ArithmeticException("Integer overflow");
@@ -9,7 +9,7 @@ public class MathUtils {
         return left + right;
     }
 
-    public static final int safeSubtract(int left, int right) {
+    public static int safeSubtract(int left, int right) {
         if (right > 0 ? left < Integer.MIN_VALUE + right
                 : left > Integer.MAX_VALUE + right) {
             throw new ArithmeticException("Integer overflow");
@@ -17,7 +17,7 @@ public class MathUtils {
         return left - right;
     }
 
-    public static final int safeMultiply(int left, int right) {
+    public static int safeMultiply(int left, int right) {
         if (right > 0 ? left > Integer.MAX_VALUE/right
                 || left < Integer.MIN_VALUE/right
                 : (right < -1 ? left > Integer.MIN_VALUE/right
@@ -29,20 +29,20 @@ public class MathUtils {
         return left * right;
     }
 
-    static final int safeDivide(int left, int right) {
+    static int safeDivide(int left, int right) {
         if ((left == Integer.MIN_VALUE) && (right == -1)) {
             throw new ArithmeticException("Integer overflow");
         }
         return left / right;
     }
 
-    static final int safeNegate(int a) {
+    static int safeNegate(int a) {
         if (a == Integer.MIN_VALUE) {
             throw new ArithmeticException("Integer overflow");
         }
         return -a;
     }
-    static final int safeAbs(int a) {
+    static int safeAbs(int a) {
         if (a == Integer.MIN_VALUE) {
             throw new ArithmeticException("Integer overflow");
         }
