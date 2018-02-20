@@ -29,7 +29,7 @@ import utils.MathUtils;
 import static utils.IO_Utils.inputInt;
 import static utils.IO_Utils.inputPositiveInt;
 
-public class Item_2_2 {
+public class Item_1_2 {
 
     public static void main(String[] args) {
         System.out.print("a=");
