@@ -21,12 +21,17 @@ package p1_values;
 
 import utils.MathUtils;
 
+import java.math.BigInteger;
+
 import static utils.IO_Utils.inputInt;
 import static utils.IO_Utils.inputPositiveInt;
 
 public class Item_1_3 {
 
     public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println();
+
         System.out.print("a=");
         int a = inputInt();
         System.out.print("n=");
@@ -49,9 +54,16 @@ public class Item_1_3 {
         } catch (Exception e) {
             e.printStackTrace();
             b = -1;
+
         }
 
-        System.out.println(a + "^" + n + " = " + b);
+        if (b != -1) {
+            System.out.println(a + "^" + n + " = " + b);
+        } else {
+            BigInteger bA = new BigInteger(a + "");
+            System.out.println(bA.pow(n));
+        }
+
     }
 
 }
