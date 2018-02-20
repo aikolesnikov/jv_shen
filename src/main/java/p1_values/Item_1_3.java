@@ -1,27 +1,30 @@
 /*
-1.1.4. Решите предыдущую задачу, если требуется, чтобы число действий (выполняемых операторов присваивания)
-было порядка log n (то есть не превосходило бы C log n для некоторой константы C ; log n |
-это степень, в которую нужно возвести 2, чтобы получить n ).
+1.1.3. Дано целое число а и натуральное (целое неотрицательное) число n . Вычислите a^n .
+Другими словами, необходимо составить программу, при исполнении которой значения переменных а и n не меняются,
+а значение некоторой другой переменной (например, b ) становится равным an .
+(При этом разрешается использовать и другие переменные.)
 
-Решение. Внесём некоторые изменения во второе из предложенных решений предыдущей задачи:
-k := n; b := 1; c:=a;
-{a в степени n = b * (c в степени k)}
+Решение. Введём целую переменную k , которая меняется от 0 до n ,
+причём поддерживается такое свойство: b = ak ).
+k := 0; b := 1;
+{b = a в степени k}
+while k <> n do begin
+k := k + 1;
+b := b * a;
+end;
+
+Другое решение той же задачи:
+k := n; b := 1;
+{a в степени n = b * (a в степени k)}
 while k <> 0 do begin
-if k mod 2 = 0 then begin
-k:= k div 2;
-c:= c*c;
-end
-else begin
 k := k - 1;
-b := b * c;
+b := b * a;
 end;
-end;
+
  */
 package p1_values;
 
 import utils.MathUtils;
-
-import java.math.BigInteger;
 
 import static utils.IO_Utils.inputInt;
 import static utils.IO_Utils.inputPositiveInt;
@@ -29,43 +32,23 @@ import static utils.IO_Utils.inputPositiveInt;
 public class Item_1_3 {
 
     public static void main(String[] args) {
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println();
-
         System.out.print("a=");
         int a = inputInt();
         System.out.print("n=");
         int n = inputPositiveInt();
 
-        int k = n;
+        int k = 0;
         int b = 1;
-        int c = a;
 
         try {
-            while (k != 0) {
-                if (k % 2 == 0) {
-                    k /= 2;
-                    c = MathUtils.safeMultiply(c, c);
-                } else {
-                    k -= 1;
-                    b = MathUtils.safeMultiply(b, c);
-                }
+            while (k++ < n) {
+                b = MathUtils.safeMultiply(b, a);
             }
         } catch (Exception e) {
             e.printStackTrace();
             b = -1;
-
         }
 
-        if (b != -1) {
-            System.out.println(a + "^" + n + " = " + b);
-        } else {
-            BigInteger bA = new BigInteger(a + "");
-            System.out.println(bA.pow(n));
-        }
-
+        System.out.println(a + "^" + n + " = " + b);
     }
-
 }
-
-
